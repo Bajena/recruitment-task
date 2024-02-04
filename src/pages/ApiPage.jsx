@@ -1,17 +1,17 @@
 import { useForm } from 'react-hook-form';
 import Errors from '../components/Errors';
 import { useGetProjects } from '../hooks/useGetProjects';
-import { useState } from 'react';
+import { useContext } from 'react';
 import SingleGithubProject from '../components/SingleGithubProject';
+import { GithubFormStateContext } from '../App';
 
 export default function ApiPage() {
+  const [params, setParams] = useContext(GithubFormStateContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-
-  const [params, setParams] = useState({ login: '', enabled: false });
+  } = useForm({ defaultValues: { login: params.login } });
   const { data, isLoading } = useGetProjects(params);
 
   const onSubmit = (data) => {

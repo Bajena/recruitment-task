@@ -1,51 +1,61 @@
+*:not(ul, ol) {
+  margin: 0;
+  padding: 0;
+}
+
+$brand-color: #646cff;
+$font-color: rgba(255, 255, 255, 0.87);
+$background-color: #242424;
+$danger-color: rgb(197, 48, 48);
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: $background-color;
+  color: $font-color;
 }
 
 body {
   padding: 1rem;
+  h1,
+  h2 {
+    margin-bottom: 1rem;
+  }
 }
 
 //nav
-
 nav.nav-menu {
   display: flex;
+  margin-bottom: 1rem;
   gap: 1rem;
   .nav-element {
     padding: 0.5rem 1rem;
-    border: 1px solid #646cff;
+    border: 1px solid $brand-color;
     font-weight: 500;
-    color: #646cff;
+    color: $brand-color;
     text-decoration: inherit;
     &.active {
-      color: #242424;
-      background-color: #646cff;
+      color: $background-color;
+      background-color: $brand-color;
     }
   }
 }
 
 //description
-
 ul > li {
-  color: #fff;
+  color: $font-color;
   &:nth-of-type(2n) {
-    color: #646cff;
+    color: $brand-color;
   }
 }
 ol > li {
-  color: #fff;
+  color: $font-color;
   &:nth-of-type(2n) {
-    color: #646cff;
+    color: $brand-color;
   }
 }
 
 //form
-
 form {
   display: flex;
   flex-direction: column;
@@ -53,21 +63,33 @@ form {
   max-width: 30rem;
   input {
     all: unset;
-    border: 1px solid #646cff;
+    border: 1px solid $brand-color;
     padding: 0.3rem 0.5rem;
     &:focus {
-      border-color: #fff;
+      border-color: $font-color;
     }
     &[type='submit'] {
-      background-color: #646cff;
-      color: #fff;
+      background-color: $brand-color;
+      color: $font-color;
       text-align: center;
       cursor: pointer;
     }
   }
   .errors {
     span {
-      color: red;
+      color: $danger-color;
+    }
+  }
+}
+
+//github project card
+.project {
+  padding: 1rem;
+  border-bottom: 1px solid $brand-color;
+  p {
+    &:first-of-type {
+      font-size: 2rem;
+      font-weight: 600;
     }
   }
 }
