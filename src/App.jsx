@@ -1,13 +1,20 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import './style/App.scss';
+import NavBar from './components/NavBar';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <h1>Initial project</h1>
-      <div className="card">content</div>
+      <NavBar
+        menuItems={[
+          { name: 'App description', path: '' },
+          { name: 'Github Api', path: 'api' },
+          { name: 'Calculator', path: 'calculator' },
+        ]}
+      />
+      <h1>Recruitment task</h1>
+      <Outlet />
     </>
   );
 }
