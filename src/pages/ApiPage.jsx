@@ -4,6 +4,7 @@ import { useGetProjects } from '../hooks/useGetProjects';
 import { useContext } from 'react';
 import SingleGithubProject from '../components/SingleGithubProject';
 import { GithubFormStateContext } from '../App';
+import Loading from '../components/Loading';
 
 export default function ApiPage() {
   const [params, setParams] = useContext(GithubFormStateContext);
@@ -33,7 +34,7 @@ export default function ApiPage() {
       </form>
       {params.enabled ? (
         isLoading ? (
-          <p>loading...</p>
+          <Loading variant="sm" />
         ) : data?.length ? (
           data.map((project) => (
             <SingleGithubProject key={project.id} projectData={project} />

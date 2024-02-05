@@ -1,6 +1,7 @@
 import { useGetCommits } from '../hooks/useGetCommits';
 import { GithubFormStateContext } from '../App';
 import { useContext } from 'react';
+import Loading from './Loading';
 export default function CommitList({ projectName }) {
   const [params] = useContext(GithubFormStateContext);
   const { data, isLoading } = useGetCommits({
@@ -11,7 +12,7 @@ export default function CommitList({ projectName }) {
     <>
       <p>Commit list:</p>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading variant="sm" />
       ) : data?.length ? (
         <ul>
           {data.map((el) => (
