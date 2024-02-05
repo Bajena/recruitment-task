@@ -1,24 +1,21 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSelector, useDispatch } from 'react-redux';
+import { calculatePower } from '../reducer';
 
-import Errors from '../components/Errors';
+import FormErrors from '../components/FormErrors';
 
 export default function CalculatorPage() {
+  const powerValue = useSelector((state) => state.power.value);
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm();
 
-  const calculatePower = (n) => {
-    if (n > 1) return n * calculatePower(n - 1);
-    return 1;
-  };
   const onSubmit = (data) => {
-    setResult(calculatePower(data.power));
+    dispatch(calculatePower(data.power));
   };
-  const [result, setResult] = useState(null);
 
   return (
     <div className="card">
@@ -26,9 +23,9 @@ export default function CalculatorPage() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="number"
-          placeholder="type a number between 1-1000"
+          placeholder="type a number between 1-160"
           min="1"
-          max="1000"
+          max="160"
           {...register('power', {
             required: 'this field is required',
             min: {
@@ -41,13 +38,12 @@ export default function CalculatorPage() {
             },
           })}
         />
-        <Errors errors={errors} />
+        <FormErrors errors={errors} />
         <input type="submit" />
       </form>
-
-      {result ? (
+      {powerValue ? (
         <p>
-          last result is: <strong>{result}</strong>
+          last result is: <strong>{powerValue}</strong>
         </p>
       ) : null}
     </div>

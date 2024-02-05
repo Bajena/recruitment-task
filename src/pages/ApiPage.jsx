@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import Errors from '../components/Errors';
+import FormErrors from '../components/FormErrors';
 import { useGetProjects } from '../hooks/useGetProjects';
 import { useContext } from 'react';
 import SingleGithubProject from '../components/SingleGithubProject';
@@ -28,7 +28,7 @@ export default function ApiPage() {
             required: 'this field is required',
           })}
         />
-        <Errors errors={errors} />
+        <FormErrors errors={errors} />
         <input type="submit" />
       </form>
       {params.enabled ? (

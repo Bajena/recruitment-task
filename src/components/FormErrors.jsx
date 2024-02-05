@@ -1,4 +1,4 @@
-export default function Errors({ errors }) {
+export default function FormErrors({ errors }) {
   return Object.keys(errors).length ? (
     <div className="errors">
       {Object.values(errors).map((error, i) => (
