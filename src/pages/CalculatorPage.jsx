@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
-import { calculatePower } from '../reducer';
+import { calculateFactorialize } from '../reducer';
 
 import FormErrors from '../components/FormErrors';
 
 export default function CalculatorPage() {
-  const powerValue = useSelector((state) => state.power.value);
+  const factorializeValue = useSelector((state) => state.factorialize.value);
   const dispatch = useDispatch();
   const {
     register,
@@ -14,26 +14,26 @@ export default function CalculatorPage() {
   } = useForm();
 
   const onSubmit = (data) => {
-    dispatch(calculatePower(data.power));
+    dispatch(calculateFactorialize(data.factorialize));
   };
 
   return (
     <div className="card">
-      <h2>Power calculator</h2>
+      <h2>Factorialize calculator</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="number"
-          placeholder="type a number between 1-160"
+          placeholder="type a number between 1-1000"
           min="1"
-          max="160"
-          {...register('power', {
+          max="1000"
+          {...register('factorialize', {
             required: 'this field is required',
             min: {
-              value: 1,
+              value: 0,
               message: 'This number is too small.',
             },
             max: {
-              value: 160,
+              value: 1000,
               message: 'This number is too great.',
             },
           })}
@@ -41,9 +41,9 @@ export default function CalculatorPage() {
         <FormErrors errors={errors} />
         <input type="submit" />
       </form>
-      {powerValue ? (
+      {factorializeValue ? (
         <p>
-          last result is: <strong>{powerValue}</strong>
+          last result is: <strong>{factorializeValue}</strong>
         </p>
       ) : null}
     </div>

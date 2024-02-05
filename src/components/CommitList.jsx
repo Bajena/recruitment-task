@@ -1,10 +1,10 @@
-import { useGetCommits } from '../hooks/useGetCommits';
+import { useCommits } from '../hooks/useCommits';
 import { GithubFormStateContext } from '../App';
 import { useContext } from 'react';
 import Loading from './Loading';
 export default function CommitList({ projectName }) {
   const [params] = useContext(GithubFormStateContext);
-  const { data, isLoading } = useGetCommits({
+  const { data, isLoading } = useCommits({
     login: params.login,
     repo: projectName,
   });

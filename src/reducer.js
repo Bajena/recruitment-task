@@ -1,22 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const powerSlice = createSlice({
-  name: 'power',
+export const factorializeSlice = createSlice({
+  name: 'factorialize',
   initialState: {
     value: 0,
   },
   reducers: {
-    calculatePower: (state, action) => {
-      const calculatePowerFunction = (n) => {
-        if (n > 1) return n * calculatePowerFunction(n - 1);
+    calculateFactorialize: (state, action) => {
+      const calculateFactorializeFunction = (n) => {
+        if (n > 1) return n * calculateFactorializeFunction(n - 1);
         return 1;
       };
 
-      state.value = calculatePowerFunction(action.payload);
+      state.value = calculateFactorializeFunction(action.payload);
     },
   },
 });
 
-export const { calculatePower } = powerSlice.actions;
+export const { calculateFactorialize } = factorializeSlice.actions;
 
-export default powerSlice.reducer;
+export default factorializeSlice.reducer;

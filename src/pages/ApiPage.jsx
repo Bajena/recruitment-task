@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import FormErrors from '../components/FormErrors';
-import { useGetProjects } from '../hooks/useGetProjects';
+import { useProjects } from '../hooks/useProjects';
 import { useContext } from 'react';
 import SingleGithubProject from '../components/SingleGithubProject';
 import { GithubFormStateContext } from '../App';
@@ -13,7 +13,7 @@ export default function ApiPage() {
     handleSubmit,
     formState: { errors },
   } = useForm({ defaultValues: { login: params.login } });
-  const { data, isLoading } = useGetProjects(params);
+  const { data, isLoading } = useProjects(params);
 
   const onSubmit = (data) => {
     setParams({ login: data.login, enabled: true });
@@ -32,17 +32,15 @@ export default function ApiPage() {
         <FormErrors errors={errors} />
         <input type="submit" />
       </form>
-      {params.enabled ? (
-        isLoading ? (
-          <Loading variant="sm" />
-        ) : data?.length ? (
-          data.map((project) => (
-            <SingleGithubProject key={project.id} projectData={project} />
-          ))
-        ) : (
-          <p>No public projects available</p>
-        )
-      ) : null}
+      {isLoading ? (
+        <Loading variant="sm" />
+      ) : data?.length ? (
+        data.map((project) => (
+          <SingleGithubProject key={project.id} projectData={project} />
+        ))
+      ) : (
+        <p>No public projects available</p>
+      )}
     </div>
   );
 }

@@ -6,10 +6,10 @@ const getGithubCommitsQuery = (login, repo) => ({
   staleTime: 1000 * 60 * 5,
 });
 
-async function getLastGithubCommits(login, repo) {
+async function getLastGithubCommits(login, repo, count = 5) {
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${login}/${repo}/commits?type=public&sort=created&page=1&per_page=5&direction=desc`,
+      `https://api.github.com/repos/${login}/${repo}/commits?type=public&sort=created&page=1&per_page=${count}&direction=desc`,
       {
         method: 'GET',
       }
@@ -24,6 +24,6 @@ async function getLastGithubCommits(login, repo) {
   }
 }
 
-export function useGetCommits({ login, repo }) {
+export function useCommits({ login, repo }) {
   return useQuery(getGithubCommitsQuery(login, repo));
 }

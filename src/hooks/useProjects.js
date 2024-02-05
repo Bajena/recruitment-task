@@ -7,10 +7,10 @@ const getGithubProjectsQuery = (login, enabled) => ({
   enabled,
 });
 
-async function getLastGithubProjects(login) {
+async function getLastGithubProjects(login, count = 5) {
   try {
     const response = await fetch(
-      `https://api.github.com/users/${login}/repos?type=public&sort=created&page=1&per_page=5&direction=desc`,
+      `https://api.github.com/users/${login}/repos?type=public&sort=created&page=1&per_page=${count}&direction=desc`,
       {
         method: 'GET',
       }
@@ -25,6 +25,6 @@ async function getLastGithubProjects(login) {
   }
 }
 
-export function useGetProjects({ login, enabled }) {
+export function useProjects({ login, enabled }) {
   return useQuery(getGithubProjectsQuery(login, enabled));
 }
