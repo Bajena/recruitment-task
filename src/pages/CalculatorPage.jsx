@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
-import { calculateFactorialize } from '../reducer';
+import { calculateFactorialize } from '../reducers/factorializeReducer';
 
 import FormErrors from '../components/FormErrors';
+import CalculatorResultHistory from '../components/CalculatorResultHistory';
 
 export default function CalculatorPage() {
   const factorializeValue = useSelector((state) => state.factorialize.value);
@@ -41,11 +42,13 @@ export default function CalculatorPage() {
         <FormErrors errors={errors} />
         <input type="submit" />
       </form>
-      {factorializeValue ? (
+      {factorializeValue > 0 ? (
         <p>
           last result is: <strong>{factorializeValue}</strong>
         </p>
       ) : null}
+
+      <CalculatorResultHistory />
     </div>
   );
 }

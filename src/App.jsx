@@ -1,14 +1,11 @@
-import { useState, createContext } from 'react';
 import './style/App.scss';
 import NavBar from './components/NavBar';
 import { Outlet } from 'react-router-dom';
 
-export const GithubFormStateContext = createContext();
-
 function App() {
-  const [params, setParams] = useState({ login: '', enabled: false });
   return (
-    <GithubFormStateContext.Provider value={[params, setParams]}>
+    <div>
+      <h1>Recruitment task</h1>
       <NavBar
         menuItems={[
           { name: 'App description', path: '' },
@@ -16,9 +13,8 @@ function App() {
           { name: 'Calculator', path: 'calculator' },
         ]}
       />
-      <h1>Recruitment task</h1>
       <Outlet />
-    </GithubFormStateContext.Provider>
+    </div>
   );
 }
 

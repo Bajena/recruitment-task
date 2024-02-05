@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const factorializeSlice = createSlice({
   name: 'factorialize',
   initialState: {
-    value: 0,
+    value: [],
   },
   reducers: {
     calculateFactorialize: (state, action) => {

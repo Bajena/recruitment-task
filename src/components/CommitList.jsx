@@ -1,11 +1,11 @@
 import { useCommits } from '../hooks/useCommits';
-import { GithubFormStateContext } from '../App';
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
+
 import Loading from './Loading';
 export default function CommitList({ projectName }) {
-  const [params] = useContext(GithubFormStateContext);
+  const loginValue = useSelector((state) => state.login.value);
   const { data, isLoading } = useCommits({
-    login: params.login,
+    login: loginValue,
     repo: projectName,
   });
   return (
