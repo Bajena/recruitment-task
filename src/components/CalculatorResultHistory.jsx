@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 export default function CalculatorResultHistory() {
   const results = useSelector((state) => state.factorializeArray.value);
   return results.length ? (
-    <div className="results">
-      <p>results history:</p>
-      <ol>
+    <div className="previous_calculations">
+      <p className="previous_calculations__title">Calculations history:</p>
+      <ol className="previous_calculations__list">
         {results.map((result, i) => (
-          <li key={i}>{result}</li>
+          <li className="previous_calculations__list__element" key={i}>
+            {result}
+          </li>
         ))}
       </ol>
     </div>

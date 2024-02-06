@@ -27,12 +27,14 @@ export default function ApiPage() {
   return (
     <>
       <p className="section-container__description">Github API</p>
-      <hr className="section-container__separator" />
-      <h2></h2>
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        autoComplete="off"
+        className="form"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className="form__group">
           <label className="form__group__label" htmlFor="login">
-            github login
+            Github login
           </label>
           <input
             className="form__group__input"
@@ -55,9 +57,11 @@ export default function ApiPage() {
           ))}
         </div>
       ) : Array.isArray(data) ? (
-        <div className="no-projects-info">
-          <span className="no-projects-info__text">
-            <b className="no-projects-info__text__highlighted">{loginValue}</b>{' '}
+        <div className="result-info">
+          <span className="result-info__text">
+            <strong className="result-info__text__highlighted">
+              {loginValue}
+            </strong>{' '}
             has no public projects available
           </span>
         </div>

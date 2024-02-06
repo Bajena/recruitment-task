@@ -25,5 +25,7 @@ export default configureStore({
     factorializeArray: factorializeArrayReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().prepend(listenerMiddleware.middleware),
+    getDefaultMiddleware({ serializableCheck: false }).prepend(
+      listenerMiddleware.middleware
+    ),
 });

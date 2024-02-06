@@ -2,7 +2,6 @@ export default function DescriptionPage() {
   return (
     <>
       <p className="section-container__description">App description</p>
-      <hr className="section-container__separator" />
       <p>
         Napisz aplikację korzystając z najnowszego api react.js (hooki, Context,
         itd.) spełniającą poniższe założenia. Aplikacja ma się składać z minimum

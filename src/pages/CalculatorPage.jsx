@@ -21,39 +21,49 @@ export default function CalculatorPage() {
   return (
     <>
       <p className="section-container__description">Calculator</p>
-      <hr className="section-container__separator" />
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        autoComplete="off"
+        className="form"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className="form__group">
           <label className="form__group__label" htmlFor="factorialize">
-            number between 1-1000
+            Number between 1-10000
           </label>
           <input
-            type="number"
-            min="1"
-            max="1000"
             className="form__group__input"
             {...register('factorialize', {
               required: 'this field is required',
+              pattern: {
+                value: /^\d+$/,
+                message: 'Field value must be a number',
+              },
               min: {
                 value: 0,
                 message: 'This number is too small.',
               },
               max: {
-                value: 1000,
-                message: 'This number is too great.',
+                value: 10000,
+                message: 'This number is too large',
               },
             })}
           />
           <FormErrors errors={errors} />
         </div>
         <button className="form__submit" type="submit">
-          Calculate
+          Calculate factorial
         </button>
       </form>
       {factorializeValue > 0 ? (
-        <p>
-          last result is: <strong>{factorializeValue}</strong>
-        </p>
+        <div className="result-info">
+          <span className="result-info__text">
+            last result is:
+            <br />
+            <strong className="result-info__text__highlighted">
+              {factorializeValue}
+            </strong>
+          </span>
+        </div>
       ) : null}
 
       <CalculatorResultHistory />

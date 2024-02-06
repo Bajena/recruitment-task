@@ -3,15 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 export const factorializeSlice = createSlice({
   name: 'factorialize',
   initialState: {
-    value: [],
+    value: '',
   },
   reducers: {
     calculateFactorialize: (state, action) => {
-      const calculateFactorializeFunction = (n) => {
-        if (n > 1) return n * calculateFactorializeFunction(n - 1);
-        return 1;
-      };
-
+      function calculateFactorializeFunction(n) {
+        var fact = 1n;
+        for (let i = 2n; i <= n; i++) {
+          fact *= i;
+        }
+        return fact.toString();
+      }
       state.value = calculateFactorializeFunction(action.payload);
     },
   },
