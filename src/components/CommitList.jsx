@@ -15,7 +15,12 @@ export default function CommitList({ projectName }) {
     <div className="projects-container__project__commits-container">
       <ul>
         {data.map((el) => (
-          <li key={el.node_id}>{el.commit.message}</li>
+          <li
+            className="projects-container__project__commits-container__list__element"
+            key={el.node_id}
+          >
+            {el.commit.message}
+          </li>
         ))}
       </ul>
     </div>

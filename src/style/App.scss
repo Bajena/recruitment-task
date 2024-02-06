@@ -176,8 +176,9 @@ main {
       text-decoration: none;
     }
     .projects-container__project__commits-container {
-      li {
+      .projects-container__project__commits-container__list__element {
         font-size: 0.8rem;
+        word-wrap: break-word;
       }
     }
   }
