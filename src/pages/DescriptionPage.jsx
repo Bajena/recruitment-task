@@ -40,7 +40,18 @@ export default function DescriptionPage() {
       </ul>
       <p>Ad 3:</p>
       <ul>
-        <li>input do podania liczby dla której będzie wyliczona silnia;</li>
+        <li>
+          input do podania liczby dla której będzie wyliczona{' '}
+          <a
+            className="section-container__link"
+            href="https://pl.wikipedia.org/wiki/Silnia"
+            target="_blank"
+            rel="noreferrer"
+          >
+            silnia
+          </a>
+          ;
+        </li>
         <li>historia poprzednich wyliczeń.</li>
       </ul>
       <p>Ogólne:</p>
