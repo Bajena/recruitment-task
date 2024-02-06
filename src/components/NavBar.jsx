@@ -1,12 +1,13 @@
+import { useContext } from 'react';
+import { AppContext } from '../App';
 import { NavLink } from 'react-router-dom';
 
-export default function NavBar({ description, menuItems }) {
-  return menuItems.length ? (
+export default function NavBar() {
+  const { appName, navigationArray } = useContext(AppContext);
+  return navigationArray.length ? (
     <nav className="nav-menu">
-      {description ? (
-        <p className="nav-menu__description">{description}</p>
-      ) : null}
-      {menuItems.map((element, i) => (
+      {appName ? <p className="nav-menu__description">{appName}</p> : null}
+      {navigationArray.map((element, i) => (
         <NavLink
           key={i}
           to={element.path}
