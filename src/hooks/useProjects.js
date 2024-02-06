@@ -17,9 +17,9 @@ async function getLastGithubProjects(login, count = 5) {
       }
     );
     if (response.status === 404) {
-      throw new Error('no projects found, please verify your login');
+      throw new Error('No projects found, please verify your login');
     } else if (response.status !== 200) {
-      throw new Error('failed to fetch github projects');
+      throw new Error('Failed to fetch github projects');
     }
     const githubProjects = await response.json();
     return githubProjects;

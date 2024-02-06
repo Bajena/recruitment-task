@@ -13,7 +13,7 @@ export default function NavBar({ description, menuItems }) {
           end
           className={({ isActive }) =>
             isActive
-              ? 'nav-menu__element nav-menu__element__active'
+              ? 'nav-menu__element nav-menu__element--active'
               : 'nav-menu__element'
           }
         >

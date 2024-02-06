@@ -8,7 +8,7 @@ export const factorializeSlice = createSlice({
   reducers: {
     calculateFactorialize: (state, action) => {
       function calculateFactorializeFunction(n) {
-        var fact = 1n;
+        let fact = 1n;
         for (let i = 2n; i <= n; i++) {
           fact *= i;
         }

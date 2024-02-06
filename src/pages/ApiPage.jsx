@@ -37,9 +37,10 @@ export default function ApiPage() {
             Github login
           </label>
           <input
+            id="login"
             className="form__group__input"
             {...register('login', {
-              required: 'this field is required',
+              required: 'This field is required',
             })}
           />
           <FormErrors errors={errors} />
@@ -59,9 +60,7 @@ export default function ApiPage() {
       ) : Array.isArray(data) ? (
         <div className="result-info">
           <span className="result-info__text">
-            <strong className="result-info__text__highlighted">
-              {loginValue}
-            </strong>{' '}
+            <span className="result-info__text--highlighted">{loginValue}</span>{' '}
             has no public projects available
           </span>
         </div>

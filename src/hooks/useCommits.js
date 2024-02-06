@@ -16,7 +16,7 @@ async function getLastGithubCommits(login, repo, count = 5) {
       }
     );
     if (response.status !== 200) {
-      throw new Error('failed to fetch github commits');
+      throw new Error('Failed to fetch github commits');
     }
     const githubCommits = await response.json();
     return githubCommits;

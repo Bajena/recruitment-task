@@ -28,12 +28,13 @@ export default function CalculatorPage() {
       >
         <div className="form__group">
           <label className="form__group__label" htmlFor="factorialize">
-            Number between 1-10000
+            Number between 0-10000
           </label>
           <input
+            id="factorialize"
             className="form__group__input"
             {...register('factorialize', {
-              required: 'this field is required',
+              required: 'This field is required',
               pattern: {
                 value: /^\d+$/,
                 message: 'Field value must be a number',
@@ -58,10 +59,9 @@ export default function CalculatorPage() {
         <div className="result-info">
           <span className="result-info__text">
             last result is:
-            <br />
-            <strong className="result-info__text__highlighted">
+            <p className="result-info__text--highlighted">
               {factorializeValue}
-            </strong>
+            </p>
           </span>
         </div>
       ) : null}
