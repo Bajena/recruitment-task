@@ -1,20 +1,26 @@
 import './style/App.scss';
 import NavBar from './components/NavBar';
 import { Outlet } from 'react-router-dom';
+import Footer from './components/Footer';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
-    <div>
-      <h1>Recruitment task</h1>
+    <main>
       <NavBar
+        description="Recruitment task"
         menuItems={[
           { name: 'App description', path: '' },
           { name: 'Github Api', path: 'api' },
           { name: 'Calculator', path: 'calculator' },
         ]}
       />
-      <Outlet />
-    </div>
+      <section className="section-container">
+        <Outlet />
+      </section>
+      <Footer />
+      <Toaster />
+    </main>
   );
 }
 

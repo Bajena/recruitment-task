@@ -4,9 +4,12 @@
 }
 
 $brand-color: #646cff;
-$font-color: rgba(255, 255, 255, 0.87);
+$font-color: rgba(255, 255, 255, 0.8);
+$border-color: rgba(255, 255, 255, 0.2);
 $background-color: #242424;
 $danger-color: rgb(197, 48, 48);
+
+$border-style-main: 0.05rem solid $border-color;
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -15,8 +18,18 @@ $danger-color: rgb(197, 48, 48);
   color: $font-color;
 }
 
-body {
-  padding: 1rem;
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  ul > li,
+  ol > li {
+    color: $font-color;
+    &:nth-of-type(2n) {
+      color: $brand-color;
+    }
+  }
+
   h1,
   h2 {
     margin-bottom: 1rem;
@@ -24,89 +37,150 @@ body {
 }
 
 //nav
-nav.nav-menu {
+.nav-menu {
+  padding: 0 2rem;
   display: flex;
-  margin-bottom: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
-  .nav-element {
-    padding: 0.5rem 1rem;
-    border: 1px solid $brand-color;
-    font-weight: 500;
-    color: $brand-color;
+  border-bottom: $border-style-main;
+  .nav-menu__description {
+    color: $font-color;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding-right: 2rem;
+    border-right: $border-style-main;
+  }
+  .nav-menu__element {
+    margin-bottom: -0.05rem;
+    padding: 1.5rem 1rem;
+    border-bottom: 0.1rem solid transparent;
+    font-weight: 600;
+    color: $font-color;
     text-decoration: inherit;
-    &.active {
-      color: $background-color;
-      background-color: $brand-color;
+    &:hover {
+      color: $brand-color;
+    }
+    &.nav-menu__element__active {
+      color: $brand-color;
+      border-color: $brand-color;
     }
   }
 }
 
-//description
-ul > li {
-  color: $font-color;
-  &:nth-of-type(2n) {
-    color: $brand-color;
+//section
+.section-container {
+  padding: 2rem;
+  .section-container__description {
+    font-weight: 600;
+    font-size: 1.2rem;
   }
-}
-ol > li {
-  color: $font-color;
-  &:nth-of-type(2n) {
-    color: $brand-color;
+  .section-container__separator {
+    margin: 1rem 0;
+    border: none;
+    width: 50%;
+    border-bottom: $border-style-main;
   }
 }
 
 //form
-form {
+.form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   max-width: 30rem;
-  input {
-    all: unset;
-    border: 1px solid $brand-color;
-    padding: 0.3rem 0.5rem;
-    &:focus {
-      border-color: $font-color;
-    }
-    &[type='submit'] {
-      background-color: $brand-color;
+  .form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    .form__group__label {
       color: $font-color;
-      text-align: center;
-      cursor: pointer;
+    }
+    .form__group__input {
+      all: unset;
+      border: 1px solid $border-color;
+      padding: 0.5rem 1rem;
+      &:focus {
+        border-color: $brand-color;
+      }
+    }
+    .form__group__errors {
+      span {
+        color: $danger-color;
+      }
     }
   }
-  .errors {
-    span {
-      color: $danger-color;
+  .form__submit {
+    all: unset;
+    padding: 0.5rem 1rem;
+    background-color: $brand-color;
+    color: $font-color;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+.no-projects-info {
+  padding: 1.5rem 0;
+  .no-projects-info__text {
+    font-size: 2rem;
+    .no-projects-info__text__highlighted {
+      color: $brand-color;
     }
   }
 }
 
-//github project card
-.project {
-  padding: 1rem;
-  border-bottom: 1px solid $brand-color;
-  p {
-    &:first-of-type {
-      font-size: 2rem;
+//github project cards
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  gap: 2rem;
+  .projects-container__project {
+    width: 15rem;
+    padding: 1rem 1rem;
+    border-left: $border-style-main;
+    &:nth-of-type(2n) {
+      border-color: $brand-color;
+    }
+    .projects-container__project__title {
+      font-size: 1.2rem;
       font-weight: 600;
+    }
+    .projects-container__project__link {
+      font-style: italic;
+      color: $brand-color;
+      text-decoration: none;
+    }
+    .projects-container__project__commits-container {
+      li {
+        font-size: 0.8rem;
+      }
     }
   }
 }
 
 //loader
 .loader-container {
-  width: 50px;
-  height: 50px;
+  height: 6rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .loader-container__small {
-  width: 30px;
-  height: 30px;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+//footer
+.footer-section {
+  margin-top: auto;
+  padding: 1rem 2rem;
+  border-top: $border-style-main;
+  .footer-section__text {
+    font-style: italic;
+  }
 }

@@ -1,6 +1,6 @@
 import { Oval } from 'react-loader-spinner';
 
-export default function Loading({ variant = 'lg' }) {
+export default function Loading({ variant = 'lg', centered }) {
   return (
     <Oval
       visible={true}
@@ -10,9 +10,7 @@ export default function Loading({ variant = 'lg' }) {
       color="#646cff"
       secondaryColor="#646cffff"
       ariaLabel="oval-loading"
-      wrapperClass={
-        variant === 'sm' ? 'loader-container__small' : 'loader-container'
-      }
+      wrapperClass="loader-container"
     />
   );
 }

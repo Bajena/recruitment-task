@@ -1,7 +1,8 @@
 export default function DescriptionPage() {
   return (
-    <div className="card">
-      <h2>Description page</h2>
+    <>
+      <p className="section-container__description">App description</p>
+      <hr className="section-container__separator" />
       <p>
         Napisz aplikację korzystając z najnowszego api react.js (hooki, Context,
         itd.) spełniającą poniższe założenia. Aplikacja ma się składać z minimum
@@ -59,9 +60,6 @@ export default function DescriptionPage() {
         </li>
       </ul>
       <p>Miło widziane użycie middlewarów reduxowych.</p>
-      <i>
-        <small>project author: Janusz Bielczyński</small>
-      </i>
-    </div>
+    </>
   );
 }

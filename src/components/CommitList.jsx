@@ -8,20 +8,18 @@ export default function CommitList({ projectName }) {
     login: loginValue,
     repo: projectName,
   });
-  return (
-    <>
-      <p>Commit list:</p>
-      {isLoading ? (
-        <Loading variant="sm" />
-      ) : data?.length ? (
-        <ul>
-          {data.map((el) => (
-            <li key={el.node_id}>{el.commit.message}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>no commits available</p>
-      )}
-    </>
+
+  return isLoading ? (
+    <Loading variant="sm" />
+  ) : data?.length ? (
+    <div className="projects-container__project__commits-container">
+      <ul>
+        {data.map((el) => (
+          <li key={el.node_id}>{el.commit.message}</li>
+        ))}
+      </ul>
+    </div>
+  ) : (
+    <p>no commits available</p>
   );
 }

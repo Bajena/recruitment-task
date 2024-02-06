@@ -19,28 +19,36 @@ export default function CalculatorPage() {
   };
 
   return (
-    <div className="card">
-      <h2>Factorialize calculator</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type="number"
-          placeholder="type a number between 1-1000"
-          min="1"
-          max="1000"
-          {...register('factorialize', {
-            required: 'this field is required',
-            min: {
-              value: 0,
-              message: 'This number is too small.',
-            },
-            max: {
-              value: 1000,
-              message: 'This number is too great.',
-            },
-          })}
-        />
-        <FormErrors errors={errors} />
-        <input type="submit" />
+    <>
+      <p className="section-container__description">Calculator</p>
+      <hr className="section-container__separator" />
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="form__group">
+          <label className="form__group__label" htmlFor="factorialize">
+            number between 1-1000
+          </label>
+          <input
+            type="number"
+            min="1"
+            max="1000"
+            className="form__group__input"
+            {...register('factorialize', {
+              required: 'this field is required',
+              min: {
+                value: 0,
+                message: 'This number is too small.',
+              },
+              max: {
+                value: 1000,
+                message: 'This number is too great.',
+              },
+            })}
+          />
+          <FormErrors errors={errors} />
+        </div>
+        <button className="form__submit" type="submit">
+          Calculate
+        </button>
       </form>
       {factorializeValue > 0 ? (
         <p>
@@ -49,6 +57,6 @@ export default function CalculatorPage() {
       ) : null}
 
       <CalculatorResultHistory />
-    </div>
+    </>
   );
 }

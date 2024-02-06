@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 const getGithubCommitsQuery = (login, repo) => ({
   queryKey: ['github-commits', login, repo],
@@ -20,6 +21,7 @@ async function getLastGithubCommits(login, repo, count = 5) {
     const githubCommits = await response.json();
     return githubCommits;
   } catch (error) {
+    toast.error(error.message);
     return error;
   }
 }

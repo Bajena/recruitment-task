@@ -25,27 +25,43 @@ export default function ApiPage() {
   };
 
   return (
-    <div className="card">
-      <h2>Github API</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          placeholder="type a github login"
-          {...register('login', {
-            required: 'this field is required',
-          })}
-        />
-        <FormErrors errors={errors} />
-        <input type="submit" />
+    <>
+      <p className="section-container__description">Github API</p>
+      <hr className="section-container__separator" />
+      <h2></h2>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="form__group">
+          <label className="form__group__label" htmlFor="login">
+            github login
+          </label>
+          <input
+            className="form__group__input"
+            {...register('login', {
+              required: 'this field is required',
+            })}
+          />
+          <FormErrors errors={errors} />
+        </div>
+        <button className="form__submit" type="submit">
+          Find repositories
+        </button>
       </form>
       {isLoading ? (
-        <Loading variant="sm" />
+        <Loading />
       ) : data?.length ? (
-        data.map((project) => (
-          <SingleGithubProject key={project.id} projectData={project} />
-        ))
-      ) : (
-        <p>No public projects available</p>
-      )}
-    </div>
+        <div className="projects-container">
+          {data.map((project) => (
+            <SingleGithubProject key={project.id} projectData={project} />
+          ))}
+        </div>
+      ) : Array.isArray(data) ? (
+        <div className="no-projects-info">
+          <span className="no-projects-info__text">
+            <b className="no-projects-info__text__highlighted">{loginValue}</b>{' '}
+            has no public projects available
+          </span>
+        </div>
+      ) : null}
+    </>
   );
 }
