@@ -55,6 +55,8 @@ export default function CalculatorPage() {
           Calculate factorial
         </button>
       </form>
+
+      {/* Nitpick: Rozwazylbym wyciagniecie ponizszego bloku do osobnego komponentu, np. CalculatorResultInfo */}
       {factorializeValue > 0 ? (
         <div className="result-info">
           <span className="result-info__text">

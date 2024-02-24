@@ -6,6 +6,7 @@ export const factorializeSlice = createSlice({
     value: '',
   },
   reducers: {
+    // Czy calculateFactorialize musi byc reducerem? Moze wystarczylaby zwykla funkcja?
     calculateFactorialize: (state, action) => {
       function calculateFactorializeFunction(n) {
         let fact = 1n;
